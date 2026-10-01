@@ -1,12 +1,18 @@
-name: main
+name: workflow 3
 
-on: [push]
+on:
+  workflow_run:
+    workflows: ["main"]
+    types:
+      - completed
+
 jobs:
-  print-text:
+  job1:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Print text from file
+      - name: Print text from file 
         run: cat dist/index.js
